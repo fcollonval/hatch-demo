@@ -1,5 +1,7 @@
 [build-system]
-requires = ["hatchling", "hatch-openapi-version @ file://./hatch-openapi-version"]
+# Using git source is only needed because the package is not published
+# It also means that if will not use the local code of hatch-openapi-version but the head on the remote
+requires = ["hatchling", "hatch-openapi-version @git+https://github.com/fcollonval/hatch-demo.git@main#subdirectory=hatch-openapi-version"]
 build-backend = "hatchling.build"
 
 [project]
@@ -35,16 +37,15 @@ Documentation = "https://github.com/fcollonval/hatch-demo#readme"
 Issues = "https://github.com/fcollonval/hatch-demo/issues"
 Source = "https://github.com/fcollonval/hatch-demo"
 
+[tool.hatch.build.targets.sdist]
+exclude = [ "hatch-openapi-version" ]
+
+[tool.hatch.build.targets.wheel]
+artifacts = [ "src/hatch_demo/openapi_client" ]
+
 [tool.hatch.version]
-# First installation in dev mode cannot use itself - fallback to default
-# path = "src/hatch_demo/_version.py"
-# Except the first installation - this should work
 source = "openapi"
 path = "src/hatch_demo/spec/openapi.yaml"
-
-[tool.hatch.metadata.hooks.custom]
-
-[tool.hatch.build.hooks.custom]
 
 [tool.hatch.build.hooks.version]
 path = "src/hatch_demo/_version.py"
@@ -53,3 +54,7 @@ template = """
 #   - modify
 #   - track in version control e.g. be sure to add to .gitignore
 __version__ = '{version}'"""
+
+[tool.hatch.metadata.hooks.custom]
+
+[tool.hatch.build.hooks.custom]

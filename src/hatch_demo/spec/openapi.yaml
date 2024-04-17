@@ -1,19 +1,16 @@
 openapi: 3.1.0
-
 info:
   title: Hello World
   summary: Hatch demo for Python Rennes Meetup 04-2024.
-  version: 0.3.3
+  version: 0.4.0
   license:
     name: MIT
     identifier: MIT
   contact:
-    name: Frédéric Collonval
+    name: "Fr\xE9d\xE9ric Collonval"
     email: frederic.collonval@webscit.com
-
 servers:
 - url: /openapi
-
 paths:
   /greeting/{name}:
     post:
@@ -28,7 +25,7 @@ paths:
           example: dave
           type: string
       responses:
-        "200":
+        '200':
           content:
             text/plain:
               schema:
@@ -36,7 +33,6 @@ paths:
                 type: string
           description: greeting response
       summary: Generate greeting
-
 components:
   schemas:
     user:
@@ -45,4 +41,4 @@ components:
         name:
           type: string
       required:
-        - name
+      - name
