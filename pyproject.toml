@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling", "pyyaml~=6.0"]
+requires = ["hatchling", "hatch-openapi-version @ file://./hatch-openapi-version"]
 build-backend = "hatchling.build"
 
 [project]
@@ -19,18 +19,21 @@ classifiers = [
 ]
 dependencies = [
   "connexion~=3.0",
-  "hatchling>=0.21.0",
-  "pyyaml~=6.0",
+  "pydantic~=2.0",
   "uvicorn"
 ]
 
-[project.urls]
-Documentation = "https://github.com/unknown/hatch-demo#readme"
-Issues = "https://github.com/unknown/hatch-demo/issues"
-Source = "https://github.com/unknown/hatch-demo"
+[project.optional-dependencies]
+dev = [
+  "pyyaml~=6.0",
+  "hatchling>=0.21.0",
+  "ruff",
+]
 
-[project.entry-points.hatch]
-openapi = "hatch_demo.hooks"
+[project.urls]
+Documentation = "https://github.com/fcollonval/hatch-demo#readme"
+Issues = "https://github.com/fcollonval/hatch-demo/issues"
+Source = "https://github.com/fcollonval/hatch-demo"
 
 [tool.hatch.version]
 # First installation in dev mode cannot use itself - fallback to default
@@ -41,6 +44,8 @@ path = "src/hatch_demo/spec/openapi.yaml"
 
 [tool.hatch.metadata.hooks.custom]
 
+[tool.hatch.build.hooks.custom]
+
 [tool.hatch.build.hooks.version]
 path = "src/hatch_demo/_version.py"
 template = """
@@ -48,51 +53,3 @@ template = """
 #   - modify
 #   - track in version control e.g. be sure to add to .gitignore
 __version__ = '{version}'"""
-
-[tool.hatch.envs.default]
-dependencies = [
-  "httpie",
-  "coverage[toml]>=6.5",
-  "pytest",
-]
-
-[tool.hatch.envs.default.scripts]
-test = "pytest {args:tests}"
-test-cov = "coverage run -m pytest {args:tests}"
-cov-report = [
-  "- coverage combine",
-  "coverage report",
-]
-cov = [
-  "test-cov",
-  "cov-report",
-]
-
-[[tool.hatch.envs.all.matrix]]
-python = ["3.8", "3.9", "3.10", "3.11", "3.12"]
-
-[tool.hatch.envs.types]
-dependencies = [
-  "mypy>=1.0.0",
-]
-[tool.hatch.envs.types.scripts]
-check = "mypy --install-types --non-interactive {args:src/hatch_demo tests}"
-
-[tool.coverage.run]
-source_pkgs = ["hatch_demo", "tests"]
-branch = true
-parallel = true
-omit = [
-  "src/hatch_demo/__about__.py",
-]
-
-[tool.coverage.paths]
-hatch_demo = ["src/hatch_demo", "*/hatch-demo/src/hatch_demo"]
-tests = ["tests", "*/hatch-demo/tests"]
-
-[tool.coverage.report]
-exclude_lines = [
-  "no cov",
-  "if __name__ == .__main__.:",
-  "if TYPE_CHECKING:",
-]

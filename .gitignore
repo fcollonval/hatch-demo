@@ -1,3 +1,4 @@
+src/hatch_demo/openapi_client
 src/hatch_demo/_version.py
 
 # Created by https://www.toptal.com/developers/gitignore/api/python

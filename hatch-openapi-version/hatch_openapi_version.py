@@ -10,6 +10,8 @@ except ImportError:
 from hatchling.plugin import hookimpl
 from hatchling.version.source.plugin.interface import VersionSourceInterface
 
+__version__ = "0.1.0"
+
 
 class OpenAPIVersionSource(VersionSourceInterface):
     PLUGIN_NAME = "openapi"

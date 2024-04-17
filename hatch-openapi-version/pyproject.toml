@@ -1,0 +1,37 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "hatch-openapi-version"
+description = "A version hatch plugin using the openapi specification."
+authors = [
+  {name = "Frédéric Collonval", email = "frederic.collonval@webscit.com"},
+]
+requires-python = ">=3.8"
+keywords = []
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+  "hatchling>=0.21.0",
+  "pyyaml~=6.0"
+]
+dynamic = ["version"]
+
+[project.urls]
+Documentation = "https://github.com/fcollonval/hatch-demo#readme"
+Issues = "https://github.com/fcollonval/hatch-demo/issues"
+Source = "https://github.com/fcollonval/hatch-demo"
+
+[project.entry-points.hatch]
+openapi = "hatch_openapi_version"
+
+[tool.hatch.version]
+path = "hatch_openapi_version.py"
