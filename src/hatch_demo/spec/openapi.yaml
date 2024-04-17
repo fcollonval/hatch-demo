@@ -1,0 +1,28 @@
+openapi: 3.0.0
+info:
+  title: Hello World
+  version: 0.3.3
+servers:
+- url: /openapi
+paths:
+  /greeting/{name}:
+    post:
+      description: Generates a greeting message.
+      operationId: hatch_demo.hello.post_greeting
+      parameters:
+      - description: Name of the person to greet.
+        in: path
+        name: name
+        required: true
+        schema:
+          example: dave
+          type: string
+      responses:
+        200:
+          content:
+            text/plain:
+              schema:
+                example: hello dave!
+                type: string
+          description: greeting response
+      summary: Generate greeting
