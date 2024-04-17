@@ -1,18 +1,13 @@
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling", "pyyaml~=6.0"]
 build-backend = "hatchling.build"
 
 [project]
 name = "hatch-demo"
-dynamic = ["version"]
-description = 'Hatch demo for Python Rennes Meetup 04-2024'
+dynamic = ["version", "authors", "description", "license"]
 readme = "README.md"
 requires-python = ">=3.8"
-license = "MIT"
 keywords = []
-authors = [
-  { name = "Frédéric Collonval", email = "fcollonval@webscit.com" },
-]
 classifiers = [
   "Development Status :: 4 - Beta",
   "Programming Language :: Python",
@@ -38,8 +33,13 @@ Source = "https://github.com/unknown/hatch-demo"
 openapi = "hatch_demo.hooks"
 
 [tool.hatch.version]
+# First installation in dev mode cannot use itself - fallback to default
+# path = "src/hatch_demo/_version.py"
+# Except the first installation - this should work
 source = "openapi"
 path = "src/hatch_demo/spec/openapi.yaml"
+
+[tool.hatch.metadata.hooks.custom]
 
 [tool.hatch.build.hooks.version]
 path = "src/hatch_demo/_version.py"

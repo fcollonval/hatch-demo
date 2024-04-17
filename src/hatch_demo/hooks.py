@@ -1,6 +1,7 @@
 import os
 
 from yaml import load, dump
+
 try:
     from yaml import CLoader as Loader, CDumper as Dumper
 except ImportError:
@@ -8,6 +9,7 @@ except ImportError:
 
 from hatchling.plugin import hookimpl
 from hatchling.version.source.plugin.interface import VersionSourceInterface
+
 
 class OpenAPIVersionSource(VersionSourceInterface):
     PLUGIN_NAME = "openapi"
@@ -51,7 +53,7 @@ class OpenAPIVersionSource(VersionSourceInterface):
         # newline character.
         with open(path, "r") as f:
             data = load(f, Loader=Loader)
-            
+
         data["info"]["version"] = version
         with open(path, "w") as f:
             dump(data, f, Dumper=Dumper, sort_keys=False)
