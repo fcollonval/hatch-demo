@@ -41,8 +41,8 @@ class OpenAPIMetadataHook(MetadataHookInterface):
 
         info = data["info"]
 
-        if "summary" in info:
-            metadata["description"] = info["summary"]
+        if "description" in info:
+            metadata["description"] = info["description"]
 
         if "contact" in info:
             contact = info["contact"]

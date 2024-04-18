@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2024-present Frédéric Collonval <fcollonval@webscit>
+#
+# SPDX-License-Identifier: MIT
 from .hello import main
 
 

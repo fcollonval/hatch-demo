@@ -1,3 +1,8 @@
+"""Hello world example from connexion.
+
+Licensed under Apache-2.0 license
+"""
+
 from pathlib import Path
 
 import connexion

@@ -1,6 +1,15 @@
 # Hatch Demo
 
-This is a demonstrator for hatch hooks presented at Python Rennes Meetup 04-2024.
+This is a demonstrator for [hatch](https://hatch.pypa.io) hooks presented at Python Rennes Meetup 04-2024.
+
+The example is a server specified through [openAPI v3.0](https://spec.openapis.org/oas/v3.0.3.html)
+specification using [connexion](https://connexion.readthedocs.io).
+
+The hatch hook examples are:
+- [version source](./hatch-openapi-version/hatch_openapi_version.py) from openAPI spec
+- [metadata source](./hatch_build.py) from openAPI spec; for authors, description and license
+- [build hook](./hatch_build.py) producing Python client from the openAPI spec and
+  in installation in editable mode creates a dummy README file for the client
 
 -----
 
@@ -23,7 +32,7 @@ pip install hatch-demo
 1. Run the server
 
 ```sh
-hatch shell
+pip install -e .
 python -m hatch_demo
 ```
 
