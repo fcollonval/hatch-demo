@@ -1,7 +1,7 @@
 [build-system]
 # Using git source is only needed because the package is not published
 # It also means that if will not use the local code of hatch-openapi-version but the head on the remote
-requires = ["hatchling", "hatch-openapi-version @git+https://github.com/fcollonval/hatch-demo.git@main#subdirectory=hatch-openapi-version"]
+requires = ["hatchling", "hatch-openapi-version @git+https://github.com/webscit/hatch-demo.git@main#subdirectory=hatch-openapi-version"]
 build-backend = "hatchling.build"
 
 [project]
@@ -33,9 +33,9 @@ dev = [
 ]
 
 [project.urls]
-Documentation = "https://github.com/fcollonval/hatch-demo#readme"
-Issues = "https://github.com/fcollonval/hatch-demo/issues"
-Source = "https://github.com/fcollonval/hatch-demo"
+Documentation = "https://github.com/webscit/hatch-demo#readme"
+Issues = "https://github.com/webscit/hatch-demo/issues"
+Source = "https://github.com/webscit/hatch-demo"
 
 [tool.hatch.build.targets.sdist]
 exclude = [ "hatch-openapi-version" ]

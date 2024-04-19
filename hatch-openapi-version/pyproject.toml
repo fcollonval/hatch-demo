@@ -26,9 +26,9 @@ dependencies = [
 dynamic = ["version"]
 
 [project.urls]
-Documentation = "https://github.com/fcollonval/hatch-demo#readme"
-Issues = "https://github.com/fcollonval/hatch-demo/issues"
-Source = "https://github.com/fcollonval/hatch-demo"
+Documentation = "https://github.com/webscit/hatch-demo#readme"
+Issues = "https://github.com/webscit/hatch-demo/issues"
+Source = "https://github.com/webscit/hatch-demo"
 
 [project.entry-points.hatch]
 openapi = "hatch_openapi_version"
